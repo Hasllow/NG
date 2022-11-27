@@ -1,15 +1,17 @@
-FROM httpd:alpine
+FROM httpd
 
 WORKDIR /usr/share/react
 
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y  curl
+
 RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash -
-RUN apt-get install -y nodejs 
+RUN apt-get install -y nodejs
 COPY ./ ./
-RUN npm i
-RUN npm build
-COPY build/. /usr/local/apache2/htdocs
+RUN npm i \
+    && npm run build \
+    && cp -a  build/. /usr/local/apache2/htdocs \
+    && rm -rf /usr/share/react
 
 EXPOSE 3000
