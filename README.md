@@ -9,14 +9,14 @@
 
 - Clone o repositório
 
-  -     $git clone https//:github.com/Hasllow/NG
+  -     git clone https://github.com/Hasllow/NG.git
 
 - Navegue até a pasta
 
-  -     $cd NG
+  -     cd NG
 
 - Inicie os containers com o docker compose
 
-  -     $docker-compose up -d
+  -     docker-compose up -d
 
 - A aplicação estará funcionando no localhost
