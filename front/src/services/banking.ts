@@ -48,7 +48,7 @@ export const createTransactionUser = async (data: { username: string; value: str
         },
       }
     );
-    console.log(response);
+
     getTransactionUser();
     return response.data;
   } catch (error) {

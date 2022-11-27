@@ -21,7 +21,6 @@ export const createUser = async (credentials: { username: string; password: stri
     const data = await axios.post("/api/create-user", credentials);
     return data.data;
   } catch (error) {
-    console.log(error);
     if (axios.isAxiosError(error)) {
       return error.response?.data;
     }

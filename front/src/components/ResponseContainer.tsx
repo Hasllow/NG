@@ -19,8 +19,6 @@ const ResponseContainer = (props: any) => {
 
   const styleStatus = props.responseStatus.status === 200 ? "success" : "error";
 
-  console.log(props);
-
   return (
     <div className={styles.container}>
       <FontAwesomeIcon
