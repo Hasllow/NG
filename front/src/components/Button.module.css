@@ -1,0 +1,21 @@
+.btn {
+  font: inherit;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0.5rem 1.25rem;
+  background-color: #212020;
+  color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px #000000;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+}

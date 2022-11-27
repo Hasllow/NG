@@ -1,0 +1,27 @@
+.container {
+  box-sizing: border-box;
+  width: 90%;
+  background: #383838;
+  margin: 0 auto;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.container * {
+  box-sizing: content-box;
+}
+
+.icon {
+  display: block;
+  margin: 0 auto;
+}
+
+.success {
+  color: #24d64b;
+  animation-iteration-count: 1;
+}
+
+.error {
+  color: #d62424;
+  animation-iteration-count: infinite;
+}

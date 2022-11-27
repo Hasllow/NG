@@ -1,0 +1,9 @@
+FROM node:alpine
+
+WORKDIR /usr/share/backend
+
+COPY ./ ./
+RUN npm i
+CMD ["npm", "start"]
+
+EXPOSE 4000

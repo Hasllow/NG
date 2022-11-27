@@ -1,0 +1,38 @@
+.form {
+  margin: 0 1em;
+  padding: 0.5em;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.form h1 {
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.form input {
+  width: 100%;
+
+  font: inherit;
+
+  background-color: #383838;
+  color: #ffffff;
+
+  padding: 0.5em;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
