@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 import { Request, Response } from "express";
 import { prismaClient } from "../database/prismaClient";
 import { passwordRequirements, testPasswordType } from "../utils/passwordRequirements";
@@ -30,8 +30,8 @@ export class CreateUserController {
     }
 
     try {
-      const salt = await bcrypt.genSalt(10);
-      const passwordHashed = await bcrypt.hash(password, salt);
+      const salt = await bcryptjs.genSalt(10);
+      const passwordHashed = await bcryptjs.hash(password, salt);
 
       const newAccount = await prismaClient.account.create({
         data: { balance: 100 },
