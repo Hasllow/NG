@@ -3,13 +3,13 @@ services:
   backend:
     container_name: backend
     restart: always
-    build: ./backend
+    build: ./back
     depends_on:
       - postgres
   client:
     container_name: client
     restart: always
-    build: ./frontend
+    build: ./front
     depends_on:
       - backend
   nginx:
