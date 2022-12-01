@@ -7,7 +7,7 @@ type TypeAuthContext = {
   onLogout: () => void;
 };
 
-type Props = {
+export type Props = {
   children: React.ReactNode;
 };
 
