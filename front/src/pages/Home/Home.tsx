@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import Button from "../../components/Button";
-import Form from "../../components/Form";
 import FormLogin from "../../components/FormLogin";
 import FormSignUp from "../../components/FormSignUp";
 import logo from "../../imgs/logo.svg";
