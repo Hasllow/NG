@@ -13,30 +13,37 @@ export interface PropsUserData {
   account: { balance: string };
 }
 
-const Transactions = (props: { userData: PropsUserData; userTransactions: PropsTransactions[] }) => {
-  const transactionsItems = props.userTransactions.map((item) => {
+const transactionsItemsList = (transactions: PropsTransactions[], userData: PropsUserData) => {
+  const listItems = transactions.map((transaction) => {
     return (
-      <tr key={item.id}>
-        <td>{new Date(item.createdAt).toLocaleDateString()}</td>
-        <td>{item?.debited?.User[0].username ? item.debited.User[0].username : props.userData.username}</td>
-        <td>{item?.credited?.User[0].username ? item.credited.User[0].username : props.userData.username}</td>
+      <tr key={transaction.id}>
+        <td>{new Date(transaction.createdAt).toLocaleDateString()}</td>
+        <td>{transaction?.debited?.User[0].username ? transaction.debited.User[0].username : userData.username}</td>
+        <td>{transaction?.credited?.User[0].username ? transaction.credited.User[0].username : userData.username}</td>
         <td
           className={`${style.value} ${
-            item?.credited?.User && item?.credited?.User[0].username !== props.userData.username
+            transaction?.credited?.User && transaction?.credited?.User[0].username !== userData.username
               ? style.debit
               : style.credit
           }`}
         >
           <span>R$</span>{" "}
           <span>
-            {item.debited?.User && item.debited?.User[0].username !== props.userData.username
-              ? item.value
-              : `-${item.value}`}
+            {transaction.debited?.User && transaction.debited?.User[0].username !== userData.username
+              ? transaction.value
+              : `-${transaction.value}`}
           </span>
         </td>
       </tr>
     );
   });
+
+  return listItems;
+};
+
+const Transactions = (props: { userData: PropsUserData; userTransactions: PropsTransactions[] }) => {
+  const { userData, userTransactions } = props;
+  const transactionsItems = transactionsItemsList(userTransactions, userData);
 
   return (
     <div className={style.transactions}>
