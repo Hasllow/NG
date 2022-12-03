@@ -21,6 +21,8 @@ const Form = (props: { title?: string; buttonText: string; onConnect: (username:
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     props.onConnect(username, password);
+    setUsername("");
+    setPassword("");
   };
 
   return (

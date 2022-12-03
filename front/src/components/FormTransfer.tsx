@@ -24,6 +24,8 @@ const Form = (props: {
     try {
       const response: ResponseAPI = await createTransactionUser({ username, value });
       setResponseStatus(response);
+      setUsername("");
+      setValue("");
 
       const dataUser = await getInfoUser();
       const dataTransactionUser = await getTransactionUser();
