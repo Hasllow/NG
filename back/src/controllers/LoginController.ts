@@ -1,4 +1,4 @@
-import bcryptjs from "bcryptjs";
+import bcrypt from "bcrypt";
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { prismaClient } from "../database/prismaClient";
@@ -28,7 +28,7 @@ export class LoginController {
       });
     }
 
-    const validPassword = await bcryptjs.compare(password, user.password);
+    const validPassword = await bcrypt.compare(password, user.password);
 
     if (validPassword) {
       const token = jwt.sign({ id: user.id }, "SECRET", { expiresIn: "1d" });
