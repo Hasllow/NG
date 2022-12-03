@@ -6,7 +6,6 @@ import styles from "./FormTransfer.module.css";
 import ResponseContainer from "./ResponseContainer";
 
 const Form = (props: {
-  title?: string;
   buttonText: string;
   onTransferUser: CallableFunction;
   onTransferTransaction: CallableFunction;
@@ -14,40 +13,33 @@ const Form = (props: {
   const [username, setUsername] = useState("");
   const [value, setValue] = useState("");
 
-  const [responseContainerIsOpen, setResponseContainerIsOpen] = useState(false);
   const [responseStatus, setResponseStatus] = useState<ResponseAPI | null>();
 
   const handleCloseContainer = () => {
-    setResponseContainerIsOpen(false);
+    setResponseStatus(null);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const response: ResponseAPI = await createTransactionUser({ username, value });
-
-      setResponseContainerIsOpen(true);
       setResponseStatus(response);
 
       const dataUser = await getInfoUser();
       const dataTransactionUser = await getTransactionUser();
       props.onTransferUser(dataUser);
       props.onTransferTransaction(dataTransactionUser);
-      // TODO: Criar layout sucesso
     } catch (error) {
-      //TODO: Criar layout erro
       console.log(error);
     }
   };
 
   return (
     <>
-      {responseContainerIsOpen && responseStatus && (
+      {responseStatus ? (
         <ResponseContainer responseStatus={responseStatus} onCloseContainer={handleCloseContainer} />
-      )}
-      {!responseContainerIsOpen && (
+      ) : (
         <form onSubmit={handleSubmit} className={styles.form}>
-          {props.title ? <h1>{props.title}</h1> : ""}
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Usuário" />
           <input
             type="number"

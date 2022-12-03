@@ -6,7 +6,7 @@ import ResponseContainer from "./ResponseContainer";
 
 const FormLogin = () => {
   const authCtx = useContext(AuthContext);
-  const [response, setResponse] = useState<null | any>(null);
+  const [response, setResponse] = useState<ResponseAPI | null>(null);
 
   const handleLogin = async (username: string, password: string) => {
     try {

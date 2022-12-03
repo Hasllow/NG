@@ -4,7 +4,7 @@ import Form, { ResponseAPI } from "./Form";
 import ResponseContainer from "./ResponseContainer";
 
 const FormSignUp = () => {
-  const [response, setResponse] = useState<null | any>(null);
+  const [response, setResponse] = useState<ResponseAPI | null>(null);
 
   const handleSignUp = async (username: string, password: string) => {
     try {
