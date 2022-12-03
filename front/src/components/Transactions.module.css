@@ -1,0 +1,26 @@
+.transactions table {
+  margin: 0 auto;
+  width: 100%;
+  border: solid 1px black;
+  border-radius: 16px;
+  background-color: #1f1e1e;
+  box-shadow: 4px 4px 0px #000000;
+  padding: 8px 16px;
+}
+
+.transactions thead td {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.value {
+  display: flex;
+  justify-content: space-between;
+}
+
+.debit {
+  color: #d62424;
+}
+.credit {
+  color: #24d64b;
+}

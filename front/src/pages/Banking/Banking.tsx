@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Button from "../../components/Button";
 import FormTransfer from "../../components/FormTransfer";
+import Transactions from "../../components/Transactions";
 import AuthContext from "../../context/Context";
 import logo from "../../imgs/logo.svg";
 import { getInfoUser, getTransactionUser } from "../../services/banking";
@@ -58,26 +59,6 @@ const Banking = () => {
     setUserTransactions(info);
   };
 
-  const transactionsItems = userTransactions.map((item) => {
-    return (
-      <tr key={item.id}>
-        <td>{new Date(item.createdAt).toLocaleDateString()}</td>
-        <td>{item?.debited?.User[0] ? item.debited.User[0].username : userData.username}</td>
-        <td>{item?.credited?.User[0] ? item.credited.User[0].username : userData.username}</td>
-        <td
-          className={`${style.value} ${
-            item?.debited?.User[0] && item?.debited?.User[0]?.username !== userData.username
-              ? style.credit
-              : style.debit
-          }`}
-        >
-          <span>R$</span>{" "}
-          <span>{item?.debited?.User[0]?.username !== userData?.username ? item.value : `-${item.value}`}</span>
-        </td>
-      </tr>
-    );
-  });
-
   useEffect(() => {
     const fetchUserInfo = async () => {
       const dataUser = await getInfoUser();
@@ -108,17 +89,7 @@ const Banking = () => {
               <Button innerText={orderText} onClick={changeOrder} />
               <Button innerText={typeTransactionText} onClick={changeType} />
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <td>data</td>
-                  <td>origem</td>
-                  <td>destino</td>
-                  <td>valor</td>
-                </tr>
-              </thead>
-              <tbody>{transactionsItems}</tbody>
-            </table>
+            <Transactions userData={userData} userTransactions={userTransactions} />
           </div>
           <div className={style.transfer}>
             <h1>Transferir</h1>
